@@ -78,10 +78,8 @@ func DecodePayload() {
 
 func keys(m map[string]int) []string {
 	mk := make([]string, len(m))
-	i := 0
-	for k, _ := range m {
-		mk[i] = k
-		i++
+	for k, x := range m {
+		mk[x] = k
 	}
 	return mk
 }
