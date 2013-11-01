@@ -52,8 +52,19 @@ func encodePacket(packet Packet) string {
 	return encoded
 }
 
-func DecodePacket(str string) Packet {
+// Decodes a packet.
+func decodePacket(data string) Packet {
+	t, e := strconv.Atoi(data[:1])
+
+	if e != nil || t > 6 || t < 0 {
+		return err
+	}
+
 	var p Packet
+	p.typeStr = packetsList[t]
+	if len(data) > 1 {
+		p.data = data[1:]
+	}
 	return p
 }
 
